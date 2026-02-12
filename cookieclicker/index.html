@@ -2,9 +2,13 @@
 <html>
 <head>
 	<script>
-    	// Disable the iframe check safely
-    	window.Game = window.Game || {};
-    	Game.ErrorFrame = function(){};
+  		// Wait for Game to exist, then override ErrorFrame
+  		var iframeFixInterval = setInterval(function() {
+    		if (typeof Game !== "undefined") {
+      			Game.ErrorFrame = function(){};
+      			clearInterval(iframeFixInterval);
+    		}
+  		}, 10);
 	</script>
 
 <script>
