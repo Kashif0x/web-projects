@@ -1,6 +1,15 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+	<script>
+  		// Wait for Game to exist, then override ErrorFrame
+  		var iframeFixInterval = setInterval(function() {
+    		if (typeof Game !== "undefined") {
+      			Game.ErrorFrame = function(){};
+      			clearInterval(iframeFixInterval);
+    		}
+  		}, 10);
+	</script>
 
 <script>
 	var VERSION=2.058;
